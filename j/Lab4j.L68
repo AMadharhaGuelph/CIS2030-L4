@@ -1,0 +1,55 @@
+00008000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 10/20/2022 4:12:49 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00008000                             7              ORG     $8000
+00008000  3039 00009000              8  START:      MOVE.W  A,D0
+00008006  B07C 0000                  9              CMP     #0,D0
+0000800A  6500 0016                 10              BLO     COND2
+0000800E                            11                                     
+0000800E  B07C 0064                 12              CMP     #100,D0
+00008012  6200 000E                 13              BHI     COND2
+00008016                            14              
+00008016  33FC 0001 00009002        15              MOVE.W  #1,B
+0000801E  6000 002A                 16              BRA     EXIT
+00008022                            17  
+00008022  B07C 0320                 18  COND2       CMP     #800,D0
+00008026  6500 0016                 19              BLO     FALSE
+0000802A  B07C 0384                 20              CMP     #900,D0
+0000802E  6200 000E                 21              BHI     FALSE
+00008032                            22              
+00008032  33FC 0001 00009002        23              MOVE.W  #1,B
+0000803A  6000 000E                 24              BRA     EXIT
+0000803E                            25              
+0000803E                            26              
+0000803E  33FC 0000 00009002        27  FALSE       MOVE.W  #0,B
+00008046  6000 0002                 28              BRA     EXIT
+0000804A                            29  * Put program code here
+0000804A                            30  
+0000804A  FFFF FFFF                 31  EXIT        SIMHALT             ; halt simulator
+0000804E                            32  
+0000804E                            33  * Put variables and constants here
+00009000                            34              ORG     $9000
+00009000= 0075                      35  A           DC.W    117
+00009002                            36  B           DS.W    1  
+00009004                            37              END     START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+A                   9000
+B                   9002
+COND2               8022
+EXIT                804A
+FALSE               803E
+START               8000

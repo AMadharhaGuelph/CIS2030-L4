@@ -1,0 +1,48 @@
+00008000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 10/20/2022 4:12:22 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00008000                             7              ORG    $8000
+00008000  1239 00009000              8  START:      MOVE.B  A,D1
+00008006  1439 00009001              9              MOVE.B  B,D2
+0000800C  B441                      10              CMP     D1,D2
+0000800E  6300 001A                 11              BLS     NOTGT
+00008012                            12              
+00008012  13F9 00009002 00009000    13              MOVE.B  C,A
+0000801C  13F9 00009002 00009001    14              MOVE.B  C,B
+00008026  6000 0018                 15              BRA     EXIT
+0000802A                            16                          
+0000802A  1039 00009000             17  NOTGT       MOVE.B  A,D0
+00008030  13F9 00009001 00009000    18              MOVE.B  B,A
+0000803A  13C0 00009001             19              MOVE.B  D0,B   
+00008040                            20   
+00008040                            21  * Put program code here
+00008040                            22  
+00008040  FFFF FFFF                 23  EXIT        SIMHALT             ; halt simulator
+00008044                            24  
+00008044                            25  * Put variables and constants here
+00009000                            26          ORG     $9000
+00009000= 01                        27  A       DC.B    $1
+00009001= 01                        28  B       DC.B    $1
+00009002= 07                        29  C       DC.B    $7         
+00009003                            30          END     START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+A                   9000
+B                   9001
+C                   9002
+EXIT                8040
+NOTGT               802A
+START               8000

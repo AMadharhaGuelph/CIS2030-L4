@@ -1,0 +1,42 @@
+00008000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 10/20/2022 4:13:31 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00008000                             7          ORG     $8000
+00008000  3039 00009000              8  START:  MOVE.W  A,D0
+00008006                             9  
+00008006                            10  
+00008006  B07C 0032                 11  LOOP    CMP     #50,D0
+0000800A  6400 0006                 12          BHS     EXIT
+0000800E  5240                      13          ADD.W   #1,D0
+00008010  60F4                      14          BRA.S   LOOP
+00008012                            15                        
+00008012  33C0 00009000             16  EXIT    MOVE.W  D0,A
+00008018                            17  * Put program code here
+00008018                            18  
+00008018  FFFF FFFF                 19          SIMHALT             ; halt simulator
+0000801C                            20  
+0000801C                            21  * Put variables and constants here
+00009000                            22          ORG     $9000
+00009000                            23         
+00009000= 0001                      24  A       DC.W    1
+00009002                            25      
+00009002                            26          END     START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+A                   9000
+EXIT                8012
+LOOP                8006
+START               8000

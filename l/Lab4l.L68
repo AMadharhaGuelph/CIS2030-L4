@@ -1,0 +1,60 @@
+00008000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 10/20/2022 5:07:16 PM
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00008000                             7          ORG     $8000
+00008000  41F9 00009000              8  START:  LEA     MY_SID,A0
+00008006  4240                       9          CLR.W   D0 
+00008008  4241                      10          CLR.W   D1
+0000800A  4242                      11          CLR.W   D2               
+0000800C                            12  
+0000800C                            13      
+0000800C                            14  
+0000800C  BE7C 0007                 15  LOOP    CMP     #7,D7
+00008010  6400 0022                 16          BHS     DONE
+00008014  4282                      17          CLR.L   D2 
+00008016  3418                      18          MOVE.W  (A0)+,D2   
+00008018                            19  
+00008018  84FC 0002                 20          DIVU    #2,D2
+0000801C  4242                      21          CLR.W   D2
+0000801E  4842                      22          SWAP    D2
+00008020                            23          
+00008020  B47C 0000                 24          CMP     #0,D2
+00008024  6600 0008                 25          BNE     ODD
+00008028  5240                      26          ADD.W   #1,D0
+0000802A  5207                      27          ADD.B   #1,D7
+0000802C  60DE                      28          BRA     LOOP   
+0000802E                            29          
+0000802E  5241                      30  ODD     ADD.W   #1,D1
+00008030  5207                      31          ADD.B   #1,D7
+00008032  60D8                      32          BRA     LOOP
+00008034                            33  * Put program code here
+00008034                            34  
+00008034  FFFF FFFF                 35  DONE    SIMHALT             ; halt simulator
+00008038                            36  
+00008038                            37  * Put variables and constants here
+00009000                            38          ORG     $9000
+00009000= 0001 0001 0007 0...       39  MY_SID  DC.W    1,1,7,2,8,5,9
+0000900E                            40  *even stored in D0
+0000900E                            41  *odd stored in D1
+0000900E                            42  *digit stored in D2
+0000900E                            43          END     START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+DONE                8034
+LOOP                800C
+MY_SID              9000
+ODD                 802E
+START               8000
